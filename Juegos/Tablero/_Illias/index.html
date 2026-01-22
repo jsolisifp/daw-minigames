@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mi Juego</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="menu">
+        <h1>PUZZLE</h1>
+        <button onclick="empezar()">EMPEZAR</button>
+        <button onclick="cambiarSonido()" id="botonSonido">SONIDO: ON</button>
+    </div>
+
+    <div id="juego" style="display:none">
+        <h2>JUGANDO</h2>
+        <button onclick="cambiarSonido()" id="botonSonidoJuego">SONIDO: ON</button>
+        <p>Movimientos: <span id="contador">0</span></p>
+        <p>Tiempo: <span id="tiempo">0</span> s</p>
+        <p>Puntuación: <span id="puntuacionJuego">0</span></p>
+
+        <div id="tablero">
+            <div onclick="mover(0)">1</div>
+            <div onclick="mover(1)">2</div>
+            <div onclick="mover(2)">3</div>
+            <div onclick="mover(3)">4</div>
+            <div onclick="mover(4)">5</div>
+            <div onclick="mover(5)">6</div>
+            <div onclick="mover(6)">7</div>
+            <div onclick="mover(7)">8</div>
+            <div onclick="mover(8)" class="vacio"></div>
+        </div>
+
+        <button onclick="reiniciar()">REINICIAR</button>
+        <button onclick="volver()">MENU</button>
+    </div>
+
+    <div id="ganar" style="display:none">
+        <h2>GANASTE</h2>
+        <button onclick="cambiarSonido()" id="botonSonidoGanar">SONIDO: ON</button>
+        <p>Movimientos: <span id="final">0</span></p>
+        <p>Tiempo: <span id="tiempoFinal">0</span> s</p>
+        <p>Puntuación: <span id="puntuacion">0</span></p>
+        <p>Récord: <span id="record">0</span></p>
+        <button onclick="empezar()">JUGAR OTRA VEZ</button>
+        <button onclick="volver()">MENU</button>
+    </div>
+
+    <audio id="moveSound" src="sonidos/knocking-door-2-397993.mp3" preload="auto"></audio>
+    <audio id="victorySound" src="sonidos/11l-victory-1749704552668-358772.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

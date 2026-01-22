@@ -1,0 +1,97 @@
+body {
+  background: #222;
+  text-align: center;
+}
+
+/* CONTENEDOR DEL JUEGO */
+#juego {
+  width: 1000px;
+  height: 450px;
+
+  margin: auto;
+  position: relative;
+
+  overflow: hidden;
+  border: 2px solid white;
+}
+
+/* FONDO COMPLETO */
+#fondo {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  object-fit: fill;
+}
+
+/* TREX */
+#trex {
+  width: 120px;
+
+  position: absolute;
+  bottom: 120px;
+  left: 50px;
+}
+
+/* OBSTÁCULO */
+#obstaculo {
+  width: 110px;
+
+  position: absolute;
+  bottom: 120px;
+  transform: translateY(18px);
+}
+
+/* PANEL DE ABAJO */
+#panel {
+  margin-top: 10px;
+  color: white;
+}
+
+#puntaje {
+  font-size: 20px;
+}
+
+/* ==============================
+   PANTALLA FIN DE JUEGO
+============================== */
+#gameOverPantalla {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* CAJITA */
+#gameOverCaja {
+  background: #111;
+  color: white;
+
+  padding: 25px 40px;
+  border-radius: 10px;
+  text-align: center;
+
+  border: 2px solid white;
+}
+
+#gameOverCaja h2 {
+  margin: 0 0 10px 0;
+}
+
+#gameOverCaja button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}

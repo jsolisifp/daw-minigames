@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Invaders</title>
+
+    <!-- Estilos del motor y del juego -->
+    <link rel="stylesheet" type="text/css" href="style_engine.css">
+    <link rel="stylesheet" type="text/css" href="style_game.css">
+</head>
+
+<body>
+
+    <!-- Contenedor principal del juego -->
+    <div id="minigame"></div>
+
+    <!-- Motor del juego (SIEMPRE primero) -->
+    <script src="scripts/miniengine.js"></script>
+
+    <!-- Lógica del juego -->
+    <script src="scripts/minigame.js"></script>
+
+    <!-- Inicialización del motor -->
+    <script>
+        MiniengineInit();
+    </script>
+
+</body>
+</html>

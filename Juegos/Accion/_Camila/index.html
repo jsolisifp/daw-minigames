@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>T-Rex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="juego">
+
+  <!-- FONDO -->
+  <img id="fondo" src="img/fondo1.png">
+
+  <!-- TREX -->
+  <img id="trex" src="img/trex.png">
+
+  <!-- OBSTÁCULO -->
+  <img id="obstaculo" src="img/obstaculo1.png">
+
+  <!-- =========================
+       PANTALLA FIN DE JUEGO
+  ========================== -->
+  <div id="gameOverPantalla">
+    <div id="gameOverCaja">
+      <h2> PERDISTE</h2>
+      <p id="puntosFinal"></p>
+      <button onclick="reiniciar()">Reintentar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- PANEL DE ABAJO -->
+<div id="panel">
+  <p id="puntaje">Puntos: 0</p>
+
+  <button onclick="reiniciar()">
+    Reiniciar partida
+  </button>
+</div>
+
+<script src="juego.js"></script>
+
+</body>
+</html>

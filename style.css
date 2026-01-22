@@ -1,0 +1,86 @@
+*
+{
+    margin:0pt;
+    padding:0pt;
+}
+
+a:visited, a:link, a:hover
+{
+    text-decoration:none;
+    color:#541c01;
+}
+
+body
+{
+    background-image:url('Imagenes/background.png');
+}
+
+.panel
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  width:20cm;
+  justify-content:center;
+  
+  position:absolute;
+  left:50%;
+  top:15%;
+  transform: translate(-50%, 0%);
+  
+  background-color:#ef5a12;
+  border-radius:20pt;
+  
+  filter: drop-shadow(10pt 10pt 4pt #00000040);  
+  
+  border-style:solid;
+  border-width:3pt;
+  border-color:#df652a;
+  
+  background-image:url('Imagenes/PanelBackground.png');
+  background-size:50pt;
+}
+
+.card
+{
+    flex-basis:21%;
+    margin:10pt;
+    
+    filter: drop-shadow(4pt 4pt 2pt #00000040);      
+    
+    transition: transform 0.2s, filter 2s
+}
+
+.card:hover
+{
+    transform:translate(0pt, -5pt);
+    filter:brightness(120%);
+}
+
+.card img
+{
+    width:100%;
+
+    border-style:solid;
+    border-width:3pt;
+    border-color:darkOrange;
+    border-radius:5pt;
+}
+
+.card div
+{
+    text-align:center;
+    font-family:sans-serif;
+    font-size:10pt;
+    font-weight:bold;
+    padding-top:5pt;
+    padding-bottom:5pt;
+    width:3cm;
+    margin:auto;
+    color:white;
+    
+    text-shadow: 1pt  1pt 2pt #00000030,
+                -1pt -1pt 2pt #00000030,
+                 1pt -1pt 2pt #00000030,
+                -1pt  1pt 2pt #00000030;
+}

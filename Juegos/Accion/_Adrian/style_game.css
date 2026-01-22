@@ -1,0 +1,18 @@
+.InstructionsText
+{
+	color:rgb(255, 100,100);
+	text-shadow: 2px 2px 2px rgb(10,200,10);
+	font-style:italic;
+	font-size:larger;
+}
+
+.PlayerText, .BoxText, .PlatformText
+{
+	color:rgb(120,120,120);
+	font-size:smaller;
+}
+
+.PlayerSprite, .BoxSprite
+{
+	box-shadow: 10px 5px 5px rgb(10,200,10);
+}

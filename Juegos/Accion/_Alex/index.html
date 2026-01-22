@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arkanoid Fácil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <div class="hud">
+      <div class="hud__left">
+        <span id="score">Puntos: 0</span>
+        <span id="lives">Vidas: 3</span>
+      </div>
+      <div class="hud__right">
+        <span class="hint">← → / A D · Espacio: empezar · P: pausa</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <canvas id="game" width="800" height="520" aria-label="Arkanoid"></canvas>
+
+      <div id="overlay" class="overlay">
+        <h1 id="title">ARKANOID</h1>
+        <p id="subtitle">Pulsa <b>Espacio</b> para empezar</p>
+        <div class="overlay__buttons">
+          <button id="btnStart" type="button">Empezar</button>
+          <button id="btnRestart" type="button" class="ghost">Reiniciar</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="mobileHint">En móvil/ratón: mueve la pala con el puntero dentro del canvas.</p>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

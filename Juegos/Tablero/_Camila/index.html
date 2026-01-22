@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego de Parejas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="btnAudio" class="btn-audio">🔊</button>
+
+    <div id="pantalla-bienvenida" class="pantalla activa">
+        <h1>Juego de Parejas</h1>
+        <h2>Encuentra las parejas de animales</h2>
+        <p>Récord: <span id="record-mostrar">-</span></p>
+        <button id="btnComenzar" class="btn-principal">Comenzar Juego</button>
+    </div>
+
+    <div id="pantalla-juego" class="pantalla">
+        <h2>Juego de Parejas</h2>
+        <div class="info-juego">
+            <p>Puntuación: <span id="puntuacion-actual">0</span></p>
+            <p>Parejas encontradas: <span id="parejas-encontradas">0</span>/4</p>
+        </div>
+        <div id="tablero"></div>
+        <button id="btnReiniciar" class="btn-secundario">Reiniciar Partida</button>
+    </div>
+
+    <div id="pantalla-resultados" class="pantalla">
+        <h1>¡Felicidades!</h1>
+        <div class="resultados-info">
+            <p>Puntuación final: <span id="puntuacion-final">0</span></p>
+            <p>Tiempo: <span id="tiempo-final">0</span> segundos</p>
+            <p id="nuevo-record" style="display:none; color: red; font-weight: bold;">¡NUEVO RÉCORD!</p>
+            <p>Récord actual: <span id="record-actual">-</span></p>
+        </div>
+        <button id="btnJugarOtraVez" class="btn-principal">Jugar Otra Vez</button>
+        <button id="btnVolverMenu" class="btn-secundario">Volver al Menú</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

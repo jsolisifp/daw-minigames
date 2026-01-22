@@ -1,0 +1,86 @@
+body {
+    text-align: center;
+    font-family: Arial;
+    background-image:url(https://free-vectors.net/_ph/6/805542910.jpg);
+}
+
+
+button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    background: lightblue;
+    border: 2px solid black;
+}
+
+#tablero {
+    width: 300px;
+    height: 300px;
+    border: 3px solid black;
+    margin: 20px auto;
+    position: relative;
+    background-color:white;
+}
+
+#tablero div {
+    width: 96px;
+    height: 96px;
+    border: 1px solid black;
+    background: rgb(174, 219, 247);
+    position: absolute;
+    font-size: 30px;
+    text-align: center;
+    line-height: 96px;
+    cursor: pointer;
+}
+
+.vacio {
+    background: gray;
+    cursor: default;
+}
+
+
+#tablero div:nth-child(1) {
+    top: 0px;
+    left: 0px;
+}
+
+#tablero div:nth-child(2) {
+    top: 0px;
+    left: 100px;
+}
+
+#tablero div:nth-child(3) {
+    top: 0px;
+    left: 200px;
+}
+
+#tablero div:nth-child(4) {
+    top: 100px;
+    left: 0px;
+}
+
+#tablero div:nth-child(5) {
+    top: 100px;
+    left: 100px;
+}
+
+#tablero div:nth-child(6) {
+    top: 100px;
+    left: 200px;
+}
+
+#tablero div:nth-child(7) {
+    top: 200px;
+    left: 0px;
+}
+
+#tablero div:nth-child(8) {
+    top: 200px;
+    left: 100px;
+}
+
+#tablero div:nth-child(9) {
+    top: 200px;
+    left: 200px;
+}

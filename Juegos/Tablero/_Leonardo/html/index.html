@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas Leonardo Navarro</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <video class="video-fondo" src="../images/153957-806571952_small.mp4" autoplay loop muted></video>
+
+    <h1>🎮 Buscaminas 🎮</h1>
+
+
+    <div class="instrucciones">
+        <p><strong>Instrucciones:</strong> Haz clic en las celdas para revelarlas. ¡Evita las minas! 💣</p>
+
+    </div>
+
+    <!-- Contenedor del juego (requerido por MiniEngine) -->
+    <div id="minigame">
+
+        <div id="uimenu" class="overlay">
+            <h2>Bienvenido a Buscaminas</h2>
+            <button onclick="ShowInput()">Jugar</button>
+        </div>
+
+
+        <div id="uiinput" class="overlay hidden">
+            <h2>Introduce tu nombre</h2>
+            <input type="text" id="playername" placeholder="Tu nombre...">
+            <button onclick="InitGameFromInput()">Empezar</button>
+        </div>
+
+
+        <div id="uihud" class="hud hidden">
+            <span>Jugador: <span id="hud-name"></span></span>
+            <span>Tiempo: <span id="hud-time">0</span>s</span>
+            <span>Puntos: <span id="hud-score">0</span></span>
+        </div>
+
+
+        <div id="uiend" class="overlay hidden">
+            <h2 id="end-title">Game Over</h2>
+            <p id="end-message"></p>
+            <p>Puntuación Final: <span id="end-score"></span></p>
+            <p>Tiempo: <span id="end-time"></span></p>
+            <button onclick="RestartGame()">Jugar de nuevo</button>
+        </div>
+    </div>
+
+
+    <script src="../js/miniengine.js"></script>
+
+    <script src="../js/main.js"></script>
+
+    <script>
+        window.onload = function () {
+            MiniengineInit();
+        };
+    </script>
+</body>
+
+</html>

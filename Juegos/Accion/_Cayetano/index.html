@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minigame</title>
+	<link rel="stylesheet" href="style_engine.css">
+	<link rel="stylesheet" href="style_game.css">
+
+	<script src="scripts/miniengine.js"></script>
+	<script src="scripts/minigame.js"></script>
+</head>
+
+<body>
+
+	<!-- CONTENEDOR DEL JUEGO -->
+	<div id="minigame"></div>
+
+	<!-- ===== MENÚ INICIAL ===== -->
+	<div id="menu-start" class="menu">
+		<h1>BREAKOUT</h1>
+		<button onclick="startGame()">Jugar</button>
+	</div>
+
+	<!-- ===== MENÚ VICTORIA ===== -->
+	<div id="menu-win" class="menu">
+		<h1>¡HAS GANADO!</h1>
+		<button onclick="startGame()">Volver a jugar</button>
+	</div>
+
+	<!-- ===== MENÚ DERROTA ===== -->
+	<div id="menu-lose" class="menu">
+		<h1>HAS PERDIDO</h1>
+		<button onclick="startGame()">Reintentar</button>
+	</div>
+
+<script>
+	MiniengineInit();
+	showMenu("start");
+</script>
+
+</body>
+</html>

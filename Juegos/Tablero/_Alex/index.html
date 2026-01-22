@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match - Encuentra las Parejas</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importamos íconos de Font Awesome para usar en el juego -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Importamos fuentes de Google para que se vea bonito -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Contenedor principal que ocupa toda la pantalla -->
+    <div class="container">
+        <!-- Contenedor interno para manejar las pantallas sin hacer scroll -->
+        <div class="screen-container">
+            
+            <!-- PANTALLA DE INICIO - La primera que vemos -->
+            <div id="start-screen" class="screen active">
+                <!-- Título del juego con animación -->
+                <div class="game-title">
+                    <h1><i class="fas fa-brain"></i> MEMORY MATCH</h1>
+                    <p class="subtitle">Encuentra todas las parejas antes de que se acabe el tiempo</p>
+                </div>
+                
+                <!-- Tarjeta principal con todas las opciones -->
+                <div class="menu-card">
+                    <h2><i class="fas fa-play-circle"></i> Jugar</h2>
+                    <!-- Botón principal para empezar el juego -->
+                    <button id="start-btn" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Nueva Partida
+                    </button>
+                    
+                    <!-- Sección para elegir la dificultad -->
+                    <div class="difficulty-section">
+                        <h3><i class="fas fa-sliders-h"></i> Dificultad</h3>
+                        <div class="difficulty-buttons">
+                            <!-- Botón para dificultad Fácil (seleccionado por defecto) -->
+                            <button class="difficulty-btn active" data-level="easy">
+                                <i class="fas fa-smile"></i> Fácil (4x4)
+                            </button>
+                            <!-- Botón para dificultad Media -->
+                            <button class="difficulty-btn" data-level="medium">
+                                <i class="fas fa-meh"></i> Medio (4x5)
+                            </button>
+                            <!-- Botón para dificultad Difícil -->
+                            <button class="difficulty-btn" data-level="hard">
+                                <i class="fas fa-flushed"></i> Difícil (5x6)
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección donde se muestran los récords guardados -->
+                    <div class="records-section">
+                        <h3><i class="fas fa-trophy"></i> Récords</h3>
+                        <div id="records-list">
+                            <p>Cargando récords...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Instrucciones del juego para los nuevos jugadores -->
+                    <div class="instructions">
+                        <h3><i class="fas fa-info-circle"></i> Instrucciones</h3>
+                        <ul>
+                            <li>Haz clic en dos cartas para voltearlas</li>
+                            <li>Encuentra las parejas de cartas iguales</li>
+                            <li>Tienes 2 minutos para encontrar todas las parejas</li>
+                            <li>Cada par encontrado te da 100 puntos</li>
+                            <li>El tiempo restante se suma a tu puntuación final</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Pie de página con información del desarrollador -->
+                <div class="footer">
+                    <p>Desarrollado como ejercicio práctico - Programación de Videojuegos</p>
+                </div>
+            </div>
+            
+            <!-- PANTALLA DE JUEGO - Donde se juega realmente -->
+            <div id="game-screen" class="screen">
+                <!-- Cabecera del juego con controles -->
+                <div class="game-header">
+                    <div class="header-left">
+                        <!-- Botón para volver al menú -->
+                        <button id="back-btn" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Menú
+                        </button>
+                        <!-- Botón para reiniciar la partida -->
+                        <button id="restart-btn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                    
+                    <div class="header-center">
+                        <!-- Título que muestra la dificultad actual -->
+                        <h2 class="game-mode-title">MEMORY MATCH</h2>
+                    </div>
+                    
+                    <div class="header-right">
+                        <!-- Controles de audio -->
+                        <div class="sound-controls">
+                            <!-- Botón para encender/apagar la música -->
+                            <button id="music-toggle" class="btn-icon" title="Música">
+                                <i class="fas fa-music"></i>
+                            </button>
+                            <!-- Botón para encender/apagar los sonidos -->
+                            <button id="sound-toggle" class="btn-icon" title="Sonidos">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Estadísticas del juego que se actualizan en tiempo real -->
+                <div class="game-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">TIEMPO</div>
+                        <!-- Aquí aparece el temporizador (02:00 inicialmente) -->
+                        <div id="timer" class="stat-value">02:00</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-label">MOVIMIENTOS</div>
+                        <!-- Contador de movimientos (cuántas veces volteamos cartas) -->
+                        <div id="moves" class="stat-value">0</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-label">PUNTUACIÓN</div>
+                        <!-- Puntuación actual del jugador -->
+                        <div id="score" class="stat-value">0</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-label">PAREJAS</div>
+                        <!-- Progreso: parejas encontradas / parejas totales -->
+                        <div id="pairs-found" class="stat-value">0 / 0</div>
+                    </div>
+                </div>
+                
+                <!-- Área donde se colocan las cartas del juego -->
+                <div class="game-board-container">
+                    <!-- Aquí JavaScript creará todas las cartas -->
+                    <div id="game-board" class="game-board"></div>
+                </div>
+            </div>
+            
+            <!-- PANTALLA DE RESULTADOS - Aparece cuando termina el juego -->
+            <div id="result-screen" class="screen">
+                <div class="result-card">
+                    <!-- Ícono grande de trofeo o reloj según si ganamos o perdimos -->
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    
+                    <!-- Título que dice si ganamos o perdimos -->
+                    <h2 id="result-title">¡Felicidades!</h2>
+                    <!-- Mensaje con más detalles -->
+                    <p id="result-message">Has completado el juego</p>
+                    
+                    <!-- Estadísticas finales de la partida -->
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <span class="stat-name">Puntuación:</span>
+                            <!-- Puntuación final -->
+                            <span id="final-score" class="stat-value">0</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="stat-name">Tiempo restante:</span>
+                            <!-- Cuánto tiempo nos sobró -->
+                            <span id="time-left" class="stat-value">0</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="stat-name">Movimientos:</span>
+                            <!-- Movimientos totales que hicimos -->
+                            <span id="final-moves" class="stat-value">0</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="stat-name">Récord anterior:</span>
+                            <!-- Mejor puntuación anterior para esta dificultad -->
+                            <span id="previous-record" class="stat-value">0</span>
+                        </div>
+                        <!-- Esta línea se destaca si batimos nuestro récord -->
+                        <div class="result-stat highlight">
+                            <span class="stat-name">Nuevo récord:</span>
+                            <!-- Dice "¡Sí!" o "No" -->
+                            <span id="new-record" class="stat-value">¡Sí!</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones para seguir jugando o volver al menú -->
+                    <div class="result-buttons">
+                        <button id="play-again-btn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Jugar Otra Vez
+                        </button>
+                        <button id="menu-btn" class="btn btn-secondary">
+                            <i class="fas fa-home"></i> Volver al Menú
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TODOS LOS SONIDOS DEL JUEGO -->
+    <!-- Usamos enlaces externos a Mixkit (gratuitos) -->
+    
+    <!-- MÚSICA DE FONDO - Suena durante el juego -->
+    <audio id="bg-music" loop preload="none">
+        <!-- Tenemos 3 opciones por si una no funciona -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-game-show-suspense-waiting-667.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-sci-fi-interface-902.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+        <!-- Mensaje si el navegador no soporta audio -->
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <!-- SONIDO DE VOLTEAR CARTA - Cuando hacemos clic en una carta -->
+    <audio id="card-flip-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-plastic-bubble-click-1124.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- SONIDO DE ACIERTO - Cuando encontramos una pareja -->
+    <audio id="match-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-notification-2018.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- SONIDO DE ERROR - Cuando dos cartas no hacen pareja -->
+    <audio id="mismatch-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-warning-alarm-buzzer-705.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-showing-a-result-2532.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- SONIDO DE VICTORIA - Cuando ganamos el juego -->
+    <audio id="win-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-triumphal-fanfare-2026.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-video-game-win-2016.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-game-level-completed-2059.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Enlazamos nuestro archivo JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* Fondo del juego */
+#minigame {
+    background-image: url(https://wallpapers.com/images/hd/bright-space-background-jmiisx1goera31ne.jpg);
+    background-size: cover;
+    
+}
+#minigame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* ajusta la oscuridad */
+    z-index: 1;
+}
+#minigame > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+.Enemigo {
+    position: absolute;
+    z-index: 3;
+}
+
+/* Estilos de los marcadores */
+.Marcador {
+    color: lime !important;
+    font-size: 24px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-weight: bold;
+
+    height: 40px;
+    line-height: 40px;
+
+    white-space: nowrap;
+}
+
+
+/* Puntos (izquierda) */
+#textoPuntos {
+    text-align: left !important;
+}
+
+/* Nivel (centro) */
+#textoNivel {
+    text-align: center !important;
+}
+
+/* Vidas (derecha) */
+#textoVidas {
+    text-align: right !important;
+}
+
+/* Pantallas menu y game over */
+.Menu, .GameOver {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.pantalla {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Arial;
+}
+
+.pantalla h1 {
+    font-size: 60px;
+    color: lime;
+    margin-bottom: 40px;
+}
+
+.pantalla p {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.empezar {
+    color: yellow;
+    font-size: 24px;
+    margin-top: 50px;
+    animation: parpadeo 1s infinite;
+}
+
+/* Efecto parpadeo */
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}

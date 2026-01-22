@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minigame</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="scripts/miniengine.js"></script>
+    <script src="scripts/minigame.js"></script>
+</head>
+<body>
+	<div class="title">
+		<h1>BUSCAMINAS</h1>
+		<img src="images/bomb-title.png" alt="">
+	</div>
+
+	<div class="menu">
+		<button onclick="startGame()" id="btn-start">Empezar</button>
+        <button id="btn-options">Opciones</button>
+		<button id="btn-options">Classificación</button>
+	</div>
+
+	<div id="options-menu" class="options hidden">
+		<h2>OPTIONS</h2>
+	
+		<div class="opt-section">
+			<label>Music Volume</label>
+			<input type="range" id="musicVolume" min="0" max="100" value="60">
+			<button id="musicMute">Mute</button>
+		</div>
+	
+		<div class="opt-section">
+			<label>Board Size</label>
+			<select id="boardSize">
+				<option value="8">8 x 8</option>
+				<option value="12">12 x 12</option>
+				<option value="16">16 x 16</option>
+			</select>
+		</div>
+	
+		<div class="opt-section">
+			<label>Bombs</label>
+			<input type="number" id="bombCount" min="5" max="200" value="10">
+		</div>
+	
+		<button id="btn-back">Back</button>
+	</div>
+
+	<div id="hud" class="hidden">
+		<div class="hud-item">⏱ Tiempo: <span id="timer">0</span>s</div>
+		<div class="hud-item">🖱 Izq: <span id="leftClicks">0</span></div>
+		<div class="hud-item">🖱 Der: <span id="rightClicks">0</span></div>
+		<div class="hud-item hud-button" id="muteBtn">
+			🔊
+		</div>
+	</div>
+
+	<button id="btn-restart" class="hidden">Restart</button>
+
+    <div id="victory-screen" class="hidden victory-panel">
+		
+		<div class="victory-box">
+			<h2> ¡Victoria! </h2>
+
+			<div class="victory-stats">
+				<p>⏱ Tiempo final: <span id="victory-time">0 </span></p>
+				<p>🖱 Clics realizados: <span id="victory-clicks">0</span></p>
+			</div>
+
+			<input id="player-name" maxlength="12" type="text" placeholder="Tu nombre">
+
+			<button id="btn-save-score" class="victory-btn">Guardar puntuación</button>
+
+			<h3>🏆 Leaderboard</h3>
+
+			<table id="leaderboard-table">
+				<thead>
+					<tr>
+						<th>Jugador</th>
+						<th>Tiempo</th>
+						<th>Clics</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+
+			<button id="btn-victory-restart" class="victory-btn">Jugar de nuevo</button>
+		</div>
+
+	</div>
+
+    <script>
+		window.gameConfig = {
+			gridSize: 8,
+			minesCount: 10,
+			musicVolume: 0.6,
+			musicMuted: false,
+			musicFile: "reference-music.wav"
+		};
+
+		const btnOptions = document.getElementById("btn-options");
+		const optionsMenu = document.getElementById("options-menu");
+		const mainMenu = document.querySelector(".menu");
+		const titleMenu = document.querySelector(".title");
+		let muted = false;
+
+		const musicVolumeInput = document.getElementById("musicVolume");
+		const musicMuteBtn = document.getElementById("musicMute");
+		const boardSizeSelect = document.getElementById("boardSize");
+		const bombCountInput = document.getElementById("bombCount");
+
+		musicVolumeInput.value = Math.round(window.gameConfig.musicVolume * 100);
+		musicMuteBtn.innerText = window.gameConfig.musicMuted ? "Unmute" : "Mute";
+		boardSizeSelect.value = window.gameConfig.gridSize;
+		bombCountInput.value = window.gameConfig.minesCount;
+
+		btnOptions.onclick = () => {
+			mainMenu.style.display = "none";
+			titleMenu.style.display = "none";
+			optionsMenu.classList.remove("hidden");
+		};
+
+		document.getElementById("btn-back").onclick = () => {
+			optionsMenu.classList.add("hidden");
+			mainMenu.style.display = "block";
+			titleMenu.style.display = "block";
+		};
+
+		musicVolumeInput.oninput = () => {
+			window.gameConfig.musicVolume = musicVolumeInput.value / 100;
+			if (typeof window.musicIndex !== "undefined" && window.sounds && window.sounds[window.musicIndex]) {
+				window.sounds[window.musicIndex].volume = window.gameConfig.musicVolume;
+			}
+		};
+
+		musicMuteBtn.onclick = () => {
+			window.gameConfig.musicMuted = !window.gameConfig.musicMuted;
+			musicMuteBtn.innerText = window.gameConfig.musicMuted ? "Unmute" : "Mute";
+			if (typeof window.musicIndex !== "undefined" && window.sounds && window.sounds[window.musicIndex]) {
+				window.sounds[window.musicIndex].muted = window.gameConfig.musicMuted;
+			}
+		};
+
+		boardSizeSelect.onchange = () => {
+			let size = parseInt(boardSizeSelect.value, 10);
+			window.gameConfig.gridSize = size;
+			let recommended = Math.round(size * size * 0.16);
+			window.gameConfig.minesCount = recommended;
+			bombCountInput.value = recommended;
+		};
+
+		bombCountInput.oninput = () => {
+			let v = parseInt(bombCountInput.value, 10);
+			if (isNaN(v) || v < 1) v = 1;
+			const maxBombs = window.gameConfig.gridSize * window.gameConfig.gridSize - 1;
+			if (v > maxBombs) v = maxBombs;
+			bombCountInput.value = v;
+			window.gameConfig.minesCount = v;
+		};
+
+		document.getElementById("btn-save-score").onclick = () => {
+			saveScore();
+		};
+
+		document.getElementById("btn-restart").onclick = () => {
+			startGame();
+		};
+
+        document.getElementById("btn-victory-restart").onclick = () => {
+            document.getElementById("victory-screen").classList.add("hidden");
+            startGame();
+        };
+
+		document.addEventListener("keydown", e => {
+			if (e.key.toLowerCase() === "g") {
+				console.log("GANADOR FORZADO (tecla G)");
+				if (typeof ForceWin === "function") ForceWin();
+			}
+		});
+
+		document.getElementById("muteBtn").addEventListener("click", () => mute());
+		
+		function mute(){
+			if(muted){
+				muted = false
+				window.sounds[window.musicIndex].muted = muted;
+				document.getElementById("muteBtn").textContent = "🔊";
+			} else {
+				muted = true
+				window.sounds[window.musicIndex].muted = muted;
+				var cat = localStorage.getItem("puntuaciones");
+				console.log(cat)
+				document.getElementById("muteBtn").textContent = "🔇";
+			}
+		};
+
+		function startGame() {
+
+			document.getElementById("btn-save-score").disabled = false;
+			document.getElementById("btn-restart").classList.add("hidden");
+			document.getElementById("victory-screen").classList.add("hidden");
+
+			window.gameConfig.gridSize = parseInt(boardSizeSelect.value, 10);
+			window.gameConfig.minesCount = parseInt(bombCountInput.value, 10);
+			window.gameConfig.musicVolume = musicVolumeInput.value / 100;
+
+			mainMenu.classList.add("hidden");
+			titleMenu.classList.add("hidden");
+			optionsMenu.classList.add("hidden");
+
+			mainMenu.style.display = "none";
+			titleMenu.style.display = "none";
+
+			let gameDiv = document.getElementById("minigame");
+
+			if (gameDiv) {
+				gameDiv.classList.remove("hidden");
+			} else {
+				const gd = document.createElement("div");
+				gd.id = "minigame";
+				document.body.appendChild(gd);
+			}
+
+			document.getElementById("hud").classList.add("show");
+
+			ResetHUD();
+			StopTimer();
+			StartTimer();
+
+			MiniengineInit();
+		}
+
+		function saveScore(){
+			const tbody = document.getElementById("leaderboard-table");
+			const row = document.createElement("tr");
+			const name = document.getElementById("player-name").value;
+			const time = document.getElementById("victory-time").textContent;
+			const clicks = document.getElementById("victory-clicks").textContent;
+
+			row.innerHTML = `
+				<td>${name}</td>
+				<td>${time}s</td>
+				<td>${clicks}</td>
+			`;
+
+			tbody.appendChild(row);
+
+			guardarPuntuacion(name, time, clicks)
+
+			document.getElementById("btn-save-score").disabled = true;
+		}
+
+		window.startGame = startGame;
+	</script>
+    <a href="../../../index.html" style="width:3cm; position:fixed; left:0pt; bottom:0pt; z-index:100"><img src="../../../Imagenes/ArrowBack.png" style="width:100%"></a>
+    
+</body>
+</html>

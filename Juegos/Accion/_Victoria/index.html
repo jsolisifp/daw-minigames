@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minigame</title>
+	<link rel="stylesheet" href="style_engine.css">
+	<link rel="stylesheet" href="style_game.css">
+	<script src="scripts/minigame.js"></script>
+	<script src="scripts/miniengine.js"></script>
+</head>
+
+<body>
+
+<div id="pantallaInicio" class="pantalla">
+	<h1>Space Invaders</h1>
+	<button onclick="empezarJuego()">Jugar</button>
+</div>
+
+<div id="pantallaJuego" class="pantalla oculto">
+	<div id="minigame"></div>
+	<button id="musicButtonUI" class="music-button" onclick="OnMusicButtonClick()" title="Musica"></button>
+</div>
+
+<div id="pantallaFinal" class="pantalla oculto">
+	<h1 id="tituloFinal"></h1>
+	<p id="resultadoFinal"></p>
+	<button onclick="reiniciarJuego()">Volver a jugar</button>
+</div>
+
+<script>
+	function empezarJuego(){
+		mostrarPantalla("pantallaJuego");
+		MiniengineInit();
+	}
+
+	function reiniciarJuego(){
+		sessionStorage.reintentar = 1;
+		location.reload();
+	}
+
+	function mostrarPantalla(id){
+		document.querySelectorAll(".pantalla").forEach(p =>
+			p.classList.add("oculto")
+		);
+		document.getElementById(id).classList.remove("oculto");
+	}
+
+	window.onload = () => {
+		if (sessionStorage.reintentar) {
+			sessionStorage.removeItem("reintentar");
+			empezarJuego();
+		}
+	};
+</script>
+
+
+</body>
+</html>

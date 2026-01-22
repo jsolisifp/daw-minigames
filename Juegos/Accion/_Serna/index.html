@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dino Run</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body onload="MiniengineInit()">
+    <div id="app">
+      <section id="screen-welcome" class="screen active">
+        <h1 class="title">DINO RUN</h1>
+        <p class="subtitle">Pulsa espacio para saltar y empezar</p>
+
+        <input
+          id="player-name"
+          class="text-input"
+          type="text"
+          maxlength="20"
+          placeholder="Nombre del jugador"
+          autocomplete="off"
+        />
+
+        <div class="button-row">
+          <button id="btn-start" class="btn-primary">Empezar</button>
+        </div>
+      </section>
+
+      <section id="screen-game" class="screen">
+        <div class="game-topbar">
+          <div class="game-title">DINO RUN</div>
+          <button id="btn-music" class="btn-music" aria-label="Musica">
+            🔊
+          </button>
+        </div>
+
+        <div class="game-layout">
+          <aside class="panel">
+            <h3 class="panel-title">Controles</h3>
+            <p class="panel-text">Espacio para saltar.</p>
+            <p class="panel-text">Evita los obstaculos y aguanta.</p>
+
+            <div class="panel-spacer"></div>
+
+            <button id="btn-game-menu" class="btn-secondary btn-back">
+              Volver al menu
+            </button>
+          </aside>
+
+          <main class="board-wrap">
+            <div class="board">
+              <div class="game-lives" id="hud-lives"></div>
+              <div class="game-hud">
+                <span>Puntuacion: <strong id="hud-score">0</strong></span>
+                <span>Tiempo: <strong id="hud-time">0</strong>s</span>
+                <span>Record: <strong id="hud-record">0</strong></span>
+              </div>
+              <div id="minigame"></div>
+            </div>
+          </main>
+        </div>
+      </section>
+
+      <section id="screen-leaderboard" class="screen">
+        <h2 class="subtitle">Tabla de puntos</h2>
+
+        <div class="leaderboard-card">
+          <p class="muted">
+            Top 10 por tiempo sobrevivido. En empate, gana el mas antiguo.
+          </p>
+
+          <ol id="leaderboard-list" class="leaderboard-list"></ol>
+        </div>
+
+        <button id="btn-leaderboard-back" class="btn-secondary">Volver</button>
+      </section>
+
+      <section id="screen-results" class="screen">
+        <h2 id="results-title">Resultado</h2>
+        <p id="results-stats"></p>
+        <p id="results-record"></p>
+
+        <div class="results-buttons">
+          <button id="btn-again" class="btn-primary">Jugar de nuevo</button>
+          <button id="btn-results-leaderboard" class="btn-secondary">
+            Tabla de puntos
+          </button>
+          <button id="btn-menu" class="btn-secondary">Volver al menu</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="js/miniengine.js"></script>
+    <script src="js/minigame.js"></script>
+  </body>
+</html>

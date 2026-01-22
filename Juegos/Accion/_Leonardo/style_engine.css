@@ -1,0 +1,51 @@
+*
+{
+	margin: 0pt;
+	padding: 0pt;
+
+	/* This prevents drag and select text/images */
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;	
+	
+}
+
+body
+{
+	/* text */
+	
+	background-color:rgb(150,139,139);
+	font-family: helvetica, arial, sans-serif;
+	
+	overflow:hidden;
+	
+	
+}
+
+#minigame
+{
+	display:block;
+    width:900px;
+    height:600px;
+	background-color:rgb(0,255,0);
+    image-rendering: crisp-edges;
+	position:absolute;
+    clip: rect(0px, 900px, 600px, 0px);
+    
+	left:50%;
+	top:40%;
+	transform:translate(-50%, -50%);
+}
+
+#minigame .sprite
+{
+	display:block;
+	position:absolute;
+}
+

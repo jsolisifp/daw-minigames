@@ -1,0 +1,53 @@
+*
+{
+	margin: 0pt;
+	padding: 0pt;
+
+	/* This prevents drag and select text/images */
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;	
+	
+}
+
+body
+{
+	margin: 0;
+    padding: 0;
+	background-color: black;
+	width: 100vw;
+	height: 100vh;
+	font-family: helvetica, arial, sans-serif;
+	overflow:hidden;
+}
+
+#minigame
+{
+	display:block;
+    width:900px;
+    height:600px;
+	background-image: url('/ProyectoBase/images/galaxia.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+	position:absolute;
+    clip-path: inset(0px 0px 0px 0px);
+    border: 2px solid rgba(138, 138, 138, 0.849);
+	left:50%;
+	top:45%;
+	transform:translate(-50%, -50%);
+}
+
+#minigame .sprite
+{
+	display:block;
+	position:absolute;
+}
+

@@ -1,0 +1,80 @@
+
+
+@font-face{
+	font-family: "Blockstepped";
+	src: url("./font/Blockstepped.ttf") format("truetype");
+	font-display: swap;
+  }
+
+@font-face {
+	font-family: "SyneMono-Regular.ttf";
+	src: url("./font/SyneMono-Regular.ttf") format("truetype");
+	font-display: swap;
+}
+
+*
+{
+	margin: 0pt;
+	padding: 0pt;
+
+	/* This prevents drag and select text/images */
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;	
+	
+}
+
+body
+{
+	/* text */
+	
+	background-color:rgb(157, 255, 198);
+	font-family: helvetica, arial, sans-serif;
+	overflow:hidden;
+	background-image: url(./images/fondo-fondo.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#minigame
+{
+	display:block;
+    width:900px;
+    height:600px;
+	background-color:rgb(89, 0, 255);
+    image-rendering: crisp-edges;
+	position:absolute;
+    clip: rect(0px, 900px, 600px, 0px);
+	left:50.5%;
+	top:50%;
+	transform:translate(-50%, -50%);
+	background-image: url(./images/fondo.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 0.3cm;
+}
+
+#minigame .sprite
+{
+	display:block;
+	position:absolute;
+}
+
+#number {
+	font-size:50px;
+	color:#000000;
+	margin-left: 50%;
+	font-family: "SyneMono-Regular.ttf";
+  }
+
+.record{
+	position: relative;
+	font-family: "Blockstepped", sans-serif;
+	font-size: 3em;
+}

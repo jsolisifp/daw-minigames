@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Puzzle - La que se avecina</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts/miniengine.js"></script>
+    <script src="scripts/minigame.js"></script>
+</head>
+<body onload="ShowStartScreen();">
+    <!-- pantalla de inicio -->
+    <div id="startScreen">
+        <div id="startContent">
+            <h1>LA QUE SE AVECINA</h1>
+            <h2>PUZZLE DE LA QUE SE AVECINA</h2>
+            <p class="instructions">
+                Usa el ratón o las flechas del teclado para mover las piezas
+            </p>
+            <button id="startButton" onclick="StartGame();">
+                ¡A JUGAR!
+            </button>
+        </div>
+    </div>
+    
+    <div id="minigame" style="display:none;"></div>
+    
+    <!-- contador de movimientos -->
+    <div id="movesCounter" style="display:none;">
+        Movimientos: <span id="movesNumber">0</span>
+    </div>
+    
+    <!-- temporizador -->
+    <div id="timerDisplay" style="display:none;">
+        Tiempo: <span id="timerNumber">00:00</span>
+    </div>
+    
+    <!-- boton reiniciar -->
+    <button id="restartButton" onclick="RestartGame();" style="display:none;">
+        REINICIAR
+    </button>
+    
+    <!-- preview de la imagen completa -->
+    <div id="previewBox" style="display:none;">
+        <p id="previewTitle">IMAGEN COMPLETA</p>
+        <img id="previewImage" src="images/LaQueSeAvecina.webp" alt="Vista previa">
+    </div>
+    
+    <!-- pantalla de victoria -->
+    <div id="victoryScreen" style="display:none;">
+        <div id="victoryContent">
+            <h1>¡ENHORABUENA!</h1>
+            <p class="victoryPhrase">¡Has ordenado el desastre!</p>
+            <p class="victoryMoves">
+                Movimientos: <span id="finalMoves">0</span>
+            </p>
+            <p class="victoryTime">
+                Tiempo: <span id="finalTime">00:00</span>
+            </p>
+            <button id="playAgainButton" onclick="PlayAgain();">
+                ¡OTRA VEZ!
+            </button>
+        </div>
+    </div>
+</body>
+</html>

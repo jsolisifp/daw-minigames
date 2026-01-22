@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minigame</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="scripts/minigame.js"></script>
+	<script src="scripts/miniengine.js"></script>
+</heads>
+<body>
+	<div id="pantallaInicio" class="pantalla">
+	<h1>CUATRO<br>EN RAYA</h1>
+	<button onclick="empezarJuego()">Jugar</button>
+</div>
+
+<div id="pantallaJuego" class="pantalla oculto">
+	<div id="gameWrapper">
+		<div id="minigame"></div>
+			<div id="statsPanel">
+				<h2>Marcador</h2>
+
+				<div class="current">
+					<p><span class="label">Tiempo:</span> <span id="time">00:00</span></p>
+					<p><span class="label">Movimientos:</span> <span id="moves">0</span></p>
+				</div>
+
+
+				<h3>Historial:</h3>
+				<ul id="history"></ul>
+			</div>
+	</div>
+</div>
+
+<div id="pantallaFinal" class="pantalla oculto">
+	<h1 id="tituloFinal"></h1>
+	<p id="resultadoFinal"></p>
+	<button onclick="reiniciarPartida()">Volver a jugar</button>
+</div>
+
+<script>
+	function empezarJuego(){
+		mostrarPantalla("pantallaJuego");
+		MiniengineInit();
+	}
+
+	function mostrarPantalla(id){
+		document.querySelectorAll(".pantalla").forEach(p =>
+			p.classList.add("oculto")
+		);
+		document.getElementById(id).classList.remove("oculto");
+	}
+</script>
+
+    <a href="../../../index.html" style="width:3cm; position:fixed; left:0pt; bottom:0pt; z-index:100"><img src="../../../Imagenes/ArrowBack.png" style="width:100%"></a>
+
+</body>
+</html>

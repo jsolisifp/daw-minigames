@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Minigame</title>
+	<link rel="stylesheet" type="text/css" href="style_engine.css">
+	<link rel="stylesheet" type="text/css" href="style_game.css">
+	<script src="scripts/minigame.js"></script>
+	<script src="scripts/miniengine.js"></script>
+</header>
+<body>
+	<div id="welcomeScreen">
+		<div class="welcome-card">
+			<h1 id="welcomeTitle">DINO RUN</h1>
+			<p id="welcomeSubtitle">Pulsa el boton para empezar</p>
+			<button id="startButton" type="button">Iniciar videojuego</button>
+		</div>
+	</div>
+	<div id="minigame">
+	</div>
+<script>
+
+	// Initialization
+	
+	MiniengineInit();
+	
+	var startButton = document.getElementById("startButton");
+	if(startButton)
+	{
+		startButton.addEventListener("click", function()
+		{
+			if(typeof StartGameFromUI === "function")
+			{
+				StartGameFromUI();
+			}
+		});
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.btn-audio {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #555;
+    background: #2a2a2a;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.pantalla {
+    display: none;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+h1 {
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+h2 {
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+.btn-principal, .btn-secundario {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn-secundario {
+    background: #555;
+}
+
+.info-juego {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#tablero {
+    width: 400px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+}
+
+.carta {
+    width: 180px;
+    height: 210px;
+    background: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    border: 2px solid #555;
+}
+
+.carta img {
+    width: 180px;
+    height: 210px;
+    object-fit: cover;
+}
+
+.resultados-info {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #ffffff;
+}

@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ayuda a gestionar mejor los tamaños */
+
+    /* Previene la selección y el arrastre de elementos */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;    
+}
+
+body {
+    /* Color de fondo gris de la captura */
+    background-color: rgb(150, 139, 139);
+    font-family: helvetica, arial, sans-serif;
+    
+    /* CENTRADO PERFECTO CON FLEXBOX */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    
+    height: 100vh;           /* Fuerza al body a medir toda la ventana */
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;        /* Evita barras de scroll innecesarias */
+}
+
+#minigame {
+    display: block;
+    width: 900px;
+    height: 600px;
+    background-color: black; /* Se verá negro gracias a tu style_game.css */
+    image-rendering: crisp-edges;
+    
+    /* Posicionamiento relativo para que los sprites (absolutos) 
+       se posicionen respecto a este cuadro negro */
+    position: relative; 
+    
+    /* Recorte del área de juego */
+    clip: rect(0px, 900px, 600px, 0px);
+    overflow: hidden;
+
+    /* Opcional: una sutil sombra para dar profundidad */
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+}
+
+#minigame .sprite {
+    display: block;
+    position: absolute;
+}
