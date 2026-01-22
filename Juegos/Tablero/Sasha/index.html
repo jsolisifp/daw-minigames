@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="crt"></div>
+    <div class="container">
+        <div id="screen-start" class="screen active">
+            <h1>[ BUSCAMINAS ]</h1>
+            <div class="menu-box">
+                <div class="menu-item">
+                    <label>TAMAÑO:</label>
+                    <select id="size">
+                        <option value="8">8x8</option>
+                        <option value="12">12x12</option>
+                        <option value="16">16x16</option>
+                    </select>
+                </div>
+                <div class="menu-item">
+                    <label>SONIDO:</label>
+                    <div class="checkbox-wrap">
+                        <input type="checkbox" id="sounds-start">
+                    </div>
+                </div>
+                <div class="best-time" id="best-time-text">RÉCORD: --</div>
+            </div>
+            <button id="btn-start">► INICIAR</button>
+        </div>
+
+        <div id="screen-game" class="screen">
+            <h1>[ BUSCAMINAS ]</h1>
+            <div class="menu-item">
+                    <label>SONIDO:</label>
+                    <div class="checkbox-wrap">
+                        <input type="checkbox" id="sounds-game">
+                    </div>
+                </div>
+            <div id="game-info">
+                <div class="stat-box">
+                    <div class="stat-label">MINAS</div>
+                    <div class="stat-value" id="mines-left">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">TIEMPO</div>
+                    <div class="stat-value"><span id="timer">0</span>s</div>
+                </div>
+            </div>
+            <div id="board"></div>
+        </div>
+
+        <div id="screen-result" class="screen">
+            <div class="result-wrap">
+                <h2 id="result-text"></h2>
+                <button id="btn-restart">◄ MENÚ</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="dev-toggle" id="btn-dev-toggle">DEV</button>
+    <div class="dev-panel" id="dev-panel">
+        <h3>[ MODO DEV ]</h3>
+        <button id="dev-reveal-safe">GANAR</button>
+        <button id="dev-show-mines">MINAS</button>
+        <button id="btn-clear-cookies">LIMPIAR</button>
+    </div>
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/dev.js"></script>
+    
+    <a href="../../../index.html" style="width:3cm; position:fixed; left:0pt; bottom:0pt; z-index:100"><img src="../../../Imagenes/ArrowBack.png" style="width:100%"></a>
+
+</body>
+
+</html>

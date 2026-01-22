@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Dinosaurio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="wrap">
+    <header class="hero">
+        <h1>Juego del Dinosaurio</h1>
+        <p class="hint">Pulsa ESPACIO para saltar</p>
+    </header>
+
+    <section class="panel">
+        <div class="controls">
+            <button class="btn primary" onclick="empezar()">Empezar</button>
+            <button class="btn ghost" onclick="reiniciar()">Reiniciar</button>
+        </div>
+
+        <div id="game" class="arena">
+            <div id="dino"></div>
+            <div id="cactus"></div>
+            <div id="pajaro"></div>
+        </div>
+
+        <div class="legend">
+            <span class="chip">Espacio = salto</span>
+            <span class="chip">Evita cactus y pajaro</span>
+        </div>
+    </section>
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>
