@@ -25,7 +25,7 @@ body
   
   position:absolute;
   left:50%;
-  top:15%;
+  top:40pt;
   transform: translate(-50%, 0%);
   
   background-color:#ef5a12;
@@ -39,6 +39,51 @@ body
   
   background-image:url('Imagenes/PanelBackground.png');
   background-size:50pt;
+  
+}
+
+.panel .title
+{
+    flex-basis:100%;
+    text-align:center;
+    font-family:sans-serif;
+    font-size:30pt;
+    font-weight:bold;
+    color:white;
+    text-shadow: 3pt  3pt 3pt #00000030,
+                -3pt -3pt 3pt #00000030,
+                 3pt -3pt 3pt #00000030,
+                -3pt  3pt 3pt #00000030;
+    padding:10pt;
+}
+
+.panel .separator
+{
+    flex-basis:100%;
+    background-color:darkOrange;
+
+    height:5pt;
+}
+
+.panel .space
+{
+    flex-basis:100%;
+
+    height:15pt;
+}
+
+.panel .text
+{
+    flex-basis:100%;
+    text-align:left;
+    font-family:sans-serif;
+    font-size:12pt;
+    color:white;
+    text-shadow: 3pt  3pt 3pt #00000030,
+                -3pt -3pt 3pt #00000030,
+                 3pt -3pt 3pt #00000030,
+                -3pt  3pt 3pt #00000030;
+    padding:10pt;
 }
 
 .card
